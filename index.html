@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Precision Vet x Long-Urie Production Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --clinic-blue: #7FB3D5;
+            --clinic-light-blue: #EBF5FB;
+            --clinic-yellow: #F7DC6F;
+            --clinic-green: #A2D9CE;
+            --text-main: #4D5656;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f4f8fb; /* ปรับสีพื้นหลังให้สบายตาขึ้นบนมือถือ */
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Cute Navigation Decor */
+        .top-decor {
+            height: 8px;
+            background: repeating-linear-gradient(45deg, var(--clinic-blue), var(--clinic-blue) 10px, var(--clinic-yellow) 10px, var(--clinic-yellow) 20px);
+        }
+
+        /* Hero Section */
+        header {
+            background-color: var(--clinic-light-blue);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        header::after {
+            content: "\f1b0";
+            font-family: "Font Awesome 5 Free"; font-weight: 900;
+            position: absolute; bottom: -10px; right: 10px;
+            font-size: 60px; color: rgba(127, 179, 213, 0.15);
+        }
+
+        header h1 { color: var(--clinic-blue); font-size: 1.6rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; }
+        header p { font-size: 1rem; color: #5a6667; margin-bottom: 5px; }
+
+        .container { width: 100%; padding: 20px 15px; }
+
+        /* Section Cards */
+        section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #eef2f5;
+        }
+
+        h2 {
+            display: flex; align-items: flex-start;
+            color: var(--clinic-blue); font-size: 1.3rem;
+            margin-top: 0; margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        h2 i { margin-right: 10px; margin-top: 3px; color: var(--clinic-yellow); font-size: 1.2rem; }
+
+        /* Concept Cards */
+        .concept-flex { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        .concept-item {
+            background: var(--clinic-light-blue);
+            padding: 20px; border-radius: 15px;
+            text-align: center; border: 2px solid var(--white);
+        }
+        .concept-item b { color: var(--clinic-blue); display: block; margin-bottom: 5px; font-size: 1.1rem; }
+        .concept-item p { margin: 0; font-size: 0.95rem; }
+
+        /* Roadmap Steps & Grids */
+        .roadmap { display: flex; flex-direction: column; gap: 15px; }
+        .step {
+            padding: 20px; border-radius: 15px;
+            background: #fff; border-top: 4px solid var(--clinic-blue);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 1px solid #f0f0f0; border-right: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0;
+        }
+        .step .month { font-weight: bold; color: var(--clinic-blue); font-size: 1.1rem; margin-bottom: 8px; }
+        .step p { margin: 0; font-size: 0.95rem; }
+
+        /* Pricing Badge */
+        .package-card {
+            background: linear-gradient(135deg, var(--clinic-blue), var(--clinic-green));
+            color: white; border-radius: 20px; padding: 30px 20px; text-align: center;
+        }
+        .price { font-size: 2.2rem; font-weight: bold; margin: 10px 0; }
+
+        /* Tables - Swipeable */
+        .table-hint { font-size: 0.8rem; color: #888; text-align: right; margin-bottom: 5px; display: block; }
+        .table-hint i { margin-right: 5px; }
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; border: 1px solid #eee; }
+        table { width: 600px; /* บังคับความกว้างให้เกินจอเพื่อให้เลื่อนได้ */ border-collapse: collapse; background: white; margin-top: 0; }
+        th { background: var(--clinic-blue); color: white; padding: 12px; text-align: left; font-size: 0.95rem; white-space: nowrap; }
+        td { padding: 12px; border-bottom: 1px solid #eee; vertical-align: top; font-size: 0.9rem; }
+
+        /* Case Studies & Info Bubbles */
+        .case-bubble {
+            background: #fff9e6; padding: 20px; border-radius: 15px;
+            margin-bottom: 15px; border-left: 4px solid var(--clinic-yellow);
+            font-size: 0.95rem;
+        }
+        .case-bubble strong { display: block; margin-bottom: 5px; font-size: 1rem; }
+        
+        .info-bubble {
+            background: var(--clinic-light-blue); padding: 20px; border-radius: 15px;
+            margin-bottom: 15px; border-left: 4px solid var(--clinic-blue);
+            font-size: 0.95rem;
+        }
+
+        /* Lists */
+        ul.custom-list { list-style: none; padding: 0; margin: 0; }
+        ul.custom-list > li { margin-bottom: 15px; display: flex; align-items: flex-start; font-size: 0.95rem; }
+        ul.custom-list li i { color: var(--clinic-green); margin-top: 4px; margin-right: 10px; font-size: 1.1rem; }
+        ul.custom-list ul { margin-top: 10px; margin-bottom: 0; padding-left: 20px; font-size: 0.9rem; color: #555; }
+        ul.custom-list ul li { margin-bottom: 5px; display: list-item; list-style-type: disc; }
+
+        /* Footer CTA */
+        .cta-box {
+            background: #fdf2e9; padding: 30px 20px; border-radius: 20px;
+            text-align: center; border: 2px dashed var(--clinic-blue);
+            margin-top: 20px;
+        }
+        .cta-box h2 { justify-content: center; text-align: center; font-size: 1.4rem; margin-bottom: 15px; }
+        
+        .process-box { text-align: left; background: #fff; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.9rem; }
+        .process-box ol { padding-left: 20px; margin-bottom: 0; margin-top: 10px; }
+        .process-box ol li { margin-bottom: 8px; }
+
+        .btn-call {
+            background: var(--clinic-blue); color: white;
+            padding: 15px 20px; border-radius: 30px;
+            text-decoration: none; font-weight: bold; display: block; /* ปุ่มเต็มจอแตะง่าย */
+            width: 100%; text-align: center; margin-top: 20px; font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(127, 179, 213, 0.3);
+        }
+        .btn-call:active { transform: scale(0.98); }
+
+        footer { text-align: center; padding: 20px; color: #999; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <div class="top-decor"></div>
+
+    <header>
+        <h1><i class="fas fa-clinic-medical"></i> แผนกลยุทธ์การตลาดและ<br>การผลิตสื่อ Precision Vet</h1>
+        <p><strong>ขับเคลื่อนนวัตกรรมรักษาสัตว์<br>ด้วยเรื่องราวที่เข้าถึงใจ (3 เดือน)</strong></p>
+        <p style="margin-top: 15px; font-size: 0.85rem; color: #888;">นำเสนอโดย: ลงเอย โปรดักชั่น เอเจนซี่<br>(Long-Urie Production Agency)</p>
+    </header>
+
+    <div class="container">
+        
+        <section>
+            <h2><i class="fas fa-heartbeat"></i> เปลี่ยน ‘ศัพท์แพทย์’<br>ให้เป็น ‘ความหวัง’</h2>
+            <div class="concept-flex">
+                <div class="concept-item">
+                    <i class="fas fa-microscope" style="font-size: 1.8rem; color: var(--clinic-blue); margin-bottom: 10px;"></i>
+                    <b>นวัตกรรมทางการแพทย์<br>(Medical Innovation)</b>
+                    <p>สเต็มเซลล์, การตรวจโรคพันธุกรรม, ศัพท์เฉพาะทาง</p>
+                </div>
+                <div class="concept-item">
+                    <i class="fas fa-paw" style="font-size: 1.8rem; color: var(--clinic-yellow); margin-bottom: 10px;"></i>
+                    <b>ความรักและความกังวล<br>(Love & Concern)</b>
+                    <p>ความกลัวการผ่าตัด, ค่าใช้จ่าย, ความหวังในการรักษา</p>
+                </div>
+            </div>
+            <div class="info-bubble" style="margin-top: 20px;">
+                <p style="margin-top:0;"><strong><i class="fas fa-bridge" style="color: var(--clinic-blue);"></i> จุดเชื่อมโยง (The Bridge):</strong><br>การสื่อสารที่สร้างความเชื่อมั่น</p>
+                <p><strong><i class="fas fa-exclamation-triangle" style="color: var(--clinic-yellow);"></i> ความท้าทาย (The Challenge):</strong><br>เทคโนโลยีเป็นเรื่องใหม่ที่ผู้เลี้ยงอาจยังไม่เข้าใจ หรือมองว่าไกลตัว</p>
+                <p style="margin-bottom:0;"><strong><i class="fas fa-bullseye" style="color: var(--clinic-green);"></i> เป้าหมาย (Our Goal):</strong><br>เปลี่ยนวิทยาศาสตร์ให้เป็นเรื่องราวที่เป็นมิตร และชี้ให้เห็นว่าเป็นทางออกที่ปลอดภัยสำหรับสัตว์เลี้ยง</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-route"></i> กลยุทธ์ 3 ระยะ<br>(Roadmap)</h2>
+            <div class="roadmap">
+                <div class="step">
+                    <div class="month">เดือนที่ 1: Educate</div>
+                    <p><strong>สร้างความรู้ความเข้าใจ:</strong> ปูพื้นฐานเซลล์บำบัดและตรวจพันธุกรรม ชี้ให้เห็นเทคโนโลยีที่เข้าถึงได้</p>
+                </div>
+                <div class="step">
+                    <div class="month">เดือนที่ 2: Trust</div>
+                    <p><strong>สร้างความเชื่อมั่นผ่านผลลัพธ์:</strong> นำเสนอ ‘ตัวอย่างเคส’ ที่สำเร็จ เพื่อเปลี่ยนความเข้าใจเป็นความมั่นใจ</p>
+                </div>
+                <div class="step">
+                    <div class="month">เดือนที่ 3: Convert</div>
+                    <p><strong>กระตุ้นการตัดสินใจ:</strong> เจาะกลุ่มสัตว์ชรา/ผสมพันธุ์ และใช้การกระตุ้นเพื่อปิดการขาย</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 0; overflow: hidden; border: none; box-shadow: none;">
+            <div class="package-card">
+                <p style="margin: 0; font-weight: 300; font-size: 1.1rem;">Standard Package</p>
+                <div class="price">56,970 <small style="font-size: 1rem;">THB / 3 Mo.</small></div>
+                <p style="font-size: 0.85rem; margin:0;">(ไม่รวม VAT และ งบโฆษณา)</p>
+            </div>
+            <div style="padding: 20px 15px; background: var(--white); border-radius: 0 0 20px 20px; border: 1px solid #eef2f5; border-top: none; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+                <ul class="custom-list">
+                    <li>
+                        <i class="fas fa-camera-retro"></i> 
+                        <div><strong>Production Engine:</strong><br>ออกกองถ่ายทำภาพนิ่งและวิดีโอ 1 ครั้ง รวบรวมวัตถุดิบทั้งหมดเพื่อใช้งานตลอด 3 เดือน</div>
+                    </li>
+                    <li>
+                        <i class="fas fa-images"></i> 
+                        <div style="width: 100%;"><strong>Monthly Asset Output:</strong> 
+                            <ul>
+                                <li>3 คอนเทนต์ภาพเดี่ยว (Single Images)</li>
+                                <li>2 คอนเทนต์อัลบั้ม (4-5 ภาพ/โพสต์)</li>
+                                <li>2 คลิปวิดีโอสั้น (รวม 6 คลิปตลอดสัญญา)</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-tasks"></i> 
+                        <div><strong>Campaign Management:</strong><br>วางแผนคอนเทนต์, ยิงแอดโฆษณา, Broadcast (1 ครั้ง/เดือน), ภาพ Cover Page, ให้คำปรึกษาทุกเดือน</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-cogs"></i> การบริหารจัดการทรัพยากร</h2>
+            <div class="info-bubble">
+                <strong>Core Event: Production Day 1 วัน</strong><br>
+                สัมภาษณ์สัตวแพทย์, ถ่ายขั้นตอนทำงาน, ถ่ายเคสตัวอย่าง
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">Output Breakdown:</p>
+            <div class="roadmap" style="margin-bottom: 20px;">
+                <div class="step" style="border-top-color: var(--clinic-yellow); padding: 15px;">
+                    <div class="month" style="font-size: 1rem;"><i class="fas fa-video"></i> Video Assets (6 คลิปสั้น)</div>
+                    <p style="font-size: 0.85rem;">เจาะลึก 1 เรื่องต่อ 1 คลิป เพื่อความเข้าใจง่าย</p>
+                </div>
+                <div class="step" style="border-top-color: var(--clinic-yellow); padding: 15px;">
+                    <div class="month" style="font-size: 1rem;"><i class="fas fa-image"></i> Visual Assets (9 ภาพเดี่ยว)</div>
+                    <p style="font-size: 0.85rem;">สำหรับโปรโมชั่นและโควตคำพูด</p>
+                </div>
+                <div class="step" style="border-top-color: var(--clinic-yellow); padding: 15px;">
+                    <div class="month" style="font-size: 1rem;"><i class="fas fa-book-open"></i> Storytelling (6 อัลบั้ม)</div>
+                    <p style="font-size: 0.85rem;">เล่าเรื่องแบบ Step-by-step หรือ Before/After</p>
+                </div>
+            </div>
+            <div style="background: #eef8f5; padding: 15px; border-radius: 10px; font-size: 0.9rem;">
+                <strong><i class="fas fa-star" style="color: var(--clinic-green);"></i> Key Benefit:</strong> บริหารวัตถุดิบชาญฉลาด เพื่อคอนเทนต์สดใหม่ตลอด 90 วัน โดยไม่รบกวนเวลาแพทย์ซ้ำซ้อน
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-book-medical"></i> Month 1<br>Education & Awareness</h2>
+            <p style="font-size: 0.95rem;"><strong>Concept:</strong> เปลี่ยนเรื่องยากให้เข้าใจง่าย สร้างการรับรู้ว่าเทคโนโลยีนี้มีอยู่จริงและเข้าถึงได้</p>
+            
+            <div class="case-bubble" style="border-left-color: var(--clinic-blue); background-color: var(--clinic-light-blue);">
+                <strong>1. Cell Therapy (เซลล์บำบัด)</strong>
+                นำเสนอความปลอดภัย: มีผลกระตุ้นภูมิคุ้มกันน้อย เสี่ยงต่อการปฏิเสธเซลล์ต่ำ
+                <br><em style="color: #666; font-size: 0.85rem; display:block; margin-top:5px;">โรคที่รักษาได้: โรคตา, ข้อต่อ/กล้ามเนื้อ, ระบบประสาท, ผิวหนัง</em>
+            </div>
+
+            <div class="case-bubble" style="border-left-color: var(--clinic-blue); background-color: var(--clinic-light-blue);">
+                <strong>2. Genetic Testing (ตรวจพันธุกรรม)</strong>
+                แนวคิด ‘รู้ก่อน ป้องกันได้’: ตรวจโรคที่แฝงในร่างกายที่ยังไม่แสดงอาการสำหรับสุนัขและแมว
+            </div>
+
+            <p style="font-size: 0.9rem; color: #555;"><strong><i class="fas fa-mobile-alt"></i> Format Utilization:</strong> ใช้คลิปวิดีโอ 2 คลิป (Q&A สั้นๆ) และ อัลบั้มภาพ (เช็คลิสต์อาการ)</p>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-star"></i> Month 2<br>Trust & Proof</h2>
+            <p style="font-size: 0.95rem;"><strong>Concept:</strong> พิสูจน์ผลลัพธ์ผ่านผู้ใช้จริง เปลี่ยนจากทฤษฎีแพทย์เป็น 'ปาฏิหาริย์ที่จับต้องได้'</p>
+            
+            <div class="case-bubble">
+                <strong>น้อง Emack (Bulldog 4 ปี)</strong> 
+                ปัญหา: แผลหลุมลึกที่กระจกตา หลังผ่าตัดเกิดฝ้าขาวใหญ่<br>
+                <span style="color: var(--clinic-blue); display:block; margin-top:5px;"><i class="fas fa-check"></i> <b>ผลลัพธ์:</b> ฝ้าขาวลดลงมาก เหลือเพียงรอยบางๆ</span>
+            </div>
+            <div class="case-bubble">
+                <strong>น้องโบนัส (Chihuahua 5 ปี)</strong> 
+                ปัญหา: แผลกระจกตาลึก มองไม่เห็น มีพยาธิเม็ดเลือดรุนแรง<br>
+                <span style="color: var(--clinic-blue); display:block; margin-top:5px;"><i class="fas fa-check"></i> <b>ผลลัพธ์:</b> แผลสมานสนิทใน 13 วัน และกลับมามองเห็นได้</span>
+            </div>
+
+            <p style="font-size: 0.9rem; color: #555;"><strong><i class="fas fa-mobile-alt"></i> Format:</strong> อัลบั้ม Before/After และ วิดีโอสัมภาษณ์เพื่อสร้าง Impact ทางอารมณ์</p>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-comments-dollar"></i> Month 3<br>Conversion Focus</h2>
+            <p style="font-size: 0.95rem;"><strong>Concept:</strong> เจาะกลุ่มผู้ที่มีความต้องการชัดเจน กระตุ้นให้เกิดการทัก Inbox หรือจองคิว</p>
+
+            <div class="info-bubble">
+                <strong>Target 1: Elderly Pet Care</strong>
+                เตรียมพร้อมรับมือสัตว์ชราและโรคแทรกซ้อนด้วยเซลล์บำบัด โดยไม่ต้องเสี่ยงวางยาสลบ
+            </div>
+            <div class="info-bubble">
+                <strong>Target 2: Pre-Breeding</strong>
+                ตรวจโรคพันธุกรรม พร้อมออกใบรับรองโดยสัตวแพทย์ ลดโอกาสถ่ายทอดความผิดปกติสู่รุ่นลูก
+            </div>
+
+            <p style="font-size: 0.9rem; color: #555;"><strong><i class="fas fa-mobile-alt"></i> Format:</strong> ภาพโปรโมทบริการพร้อม CTA ชัดเจน และใช้โควตา Broadcast เพื่อปิดการขาย</p>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-table"></i> 3-Month Matrix</h2>
+            <span class="table-hint"><i class="fas fa-hand-point-right"></i> ปัดซ้าย-ขวา เพื่อดูตาราง</span>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>หัวข้อ</th>
+                            <th>เดือน 1 (Educate)</th>
+                            <th>เดือน 2 (Validate)</th>
+                            <th>เดือน 3 (Convert)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>สถานะผู้ชม</strong></td>
+                            <td>เริ่มสนใจเทคโนโลยี</td>
+                            <td>ซาบซึ้งและเชื่อมั่นในความปลอดภัย</td>
+                            <td>พร้อมปรึกษาและตัดสินใจลงทุน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>แกนเนื้อหา</strong></td>
+                            <td>วิทยาศาสตร์ที่เข้าถึงง่าย</td>
+                            <td>เรื่องราวความสำเร็จ</td>
+                            <td>การปกป้องเชิงรุก/ข้อเสนอพิเศษ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>การกระจาย</strong></td>
+                            <td>Infographic / วิดีโอ Q&A</td>
+                            <td>อัลบั้มภาพ / วิดีโอรีวิว</td>
+                            <td>ภาพโปรโมชั่น / Broadcast</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-chart-line"></i> Ad Management & Optimization</h2>
+            <div class="roadmap">
+                <div class="step" style="border-top-color: var(--clinic-green); padding: 15px;">
+                    <div class="month" style="font-size: 1rem;">1. Audience Targeting</div>
+                    <p style="font-size: 0.9rem;">วิเคราะห์และตั้งค่าโฆษณาเพื่อเข้าถึงกลุ่มคนรักสัตว์ที่มีกำลังซื้อ และกลุ่มผู้เพาะพันธุ์สัตว์โดยเฉพาะ</p>
+                </div>
+                <div class="step" style="border-top-color: var(--clinic-green); padding: 15px;">
+                    <div class="month" style="font-size: 1rem;">2. Retargeting Strategy</div>
+                    <p style="font-size: 0.9rem;">สร้าง Custom Audience จากผู้ที่ดูวิดีโอเดือนที่ 1 เพื่อส่งแอดเคสรีวิวและข้อเสนอไปหาอย่างแม่นยำ</p>
+                </div>
+                <div class="step" style="border-top-color: var(--clinic-green); padding: 15px;">
+                    <div class="month" style="font-size: 1rem;">3. Monthly Reporting</div>
+                    <p style="font-size: 0.9rem;">สรุปผล Reach, Engagement, Inbox พร้อมให้คำปรึกษาและปรับกลยุทธ์แบบ Data-Driven</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-box">
+            <h2 style="color: var(--clinic-blue);"><i class="fas fa-flag-checkered"></i> ขั้นตอนต่อไป (Next Steps)</h2>
+            <p style="font-size: 0.95rem; margin-bottom: 5px;"><strong>Package:</strong> Standard Package (3 เดือน)</p>
+            <p style="font-size: 0.95rem; margin-top: 0;"><strong>Budget:</strong> 56,970 บาท<br><span style="font-size: 0.8rem; color:#888;">(ชำระเต็มก่อนเริ่มงาน / ไม่รวม VAT/งบแอด)</span></p>
+            
+            <div class="process-box">
+                <strong>Process:</strong>
+                <ol>
+                    <li>เซ็นสัญญาอนุมัติแผนและชำระเงิน</li>
+                    <li>ประชุม Kick-off กับทีมสัตวแพทย์ลงลึกข้อมูลเทคนิค</li>
+                    <li>กำหนดวันออกกอง เตรียมพร้อมเดินหน้าโปรเจกต์</li>
+                </ol>
+            </div>
+
+            <div style="margin-top: 25px; font-size: 1.1rem;">
+                <p style="margin-bottom: 5px;"><strong>คุณกรอง CMO</strong></p>
+                <p style="margin-top: 0; color: var(--clinic-blue); font-weight: bold;"><i class="fas fa-phone-alt"></i> 081-4249654</p>
+            </div>
+            
+            <a href="tel:0814249654" class="btn-call">โทรติดต่อสอบถาม <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>สร้างสรรค์โดย Long-Urie Production Agency <br> เพื่อ Precision Vet</p>
+    </footer>
+
+</body>
+</html>
